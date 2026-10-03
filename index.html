@@ -1546,6 +1546,42 @@
   html:not([data-theme="dark"]) .svc-num{ color:#0B8174; }
   html:not([data-theme="dark"]) .svc-card h3{ color:var(--heading); }
   html:not([data-theme="dark"]) .svc-card p{ color:#4A5056; }
+
+  /* ===== Testimonials: collapsed by default, clean cards ===== */
+  .tc-bar{ display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; background:var(--paper-dim); border:1px solid var(--surface-border); border-radius:18px; padding:26px 30px; }
+  .tc-bar h2{ font-family:var(--font-display); font-size:clamp(1.3rem,2.2vw,1.8rem); font-weight:600; color:var(--heading); margin-top:8px; letter-spacing:-.01em; }
+  .tc-toggle{ display:inline-flex; align-items:center; gap:10px; cursor:pointer; font:inherit; font-weight:700; font-size:.92rem; color:var(--heading); background:transparent; border:1.5px solid var(--surface-border); border-radius:999px; padding:12px 22px; transition:border-color .25s, background .25s, box-shadow .25s; }
+  .tc-toggle:hover{ border-color:var(--gold); box-shadow:0 10px 24px -14px rgba(15,156,140,.6); }
+  .tc-toggle:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+  .tc-toggle svg{ width:11px; height:7px; color:var(--gold); transition:transform .35s var(--ease); }
+  .tc-toggle[aria-expanded="true"] svg{ transform:rotate(180deg); }
+  .tc-lbl-hide{ display:none; }
+  .tc-toggle[aria-expanded="true"] .tc-lbl-show{ display:none; }
+  .tc-toggle[aria-expanded="true"] .tc-lbl-hide{ display:inline; }
+
+  .tc-collapse{ display:grid; grid-template-rows:0fr; visibility:hidden; transition:grid-template-rows .55s var(--ease), visibility 0s linear .55s; }
+  .tc-collapse.open{ grid-template-rows:1fr; visibility:visible; transition:grid-template-rows .55s var(--ease), visibility 0s; }
+  .tc-inner{ overflow:hidden; min-height:0; }
+  .tc-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; padding-top:20px; }
+  .tc-card{ margin:0; display:flex; flex-direction:column; background:var(--paper-dim); border:1px solid var(--surface-border); border-radius:18px; padding:28px 26px 24px; position:relative; opacity:0; transform:translateY(14px); transition:opacity .5s var(--ease), transform .5s var(--ease), box-shadow .3s, border-color .3s; }
+  .tc-collapse.open .tc-card{ opacity:1; transform:none; }
+  .tc-collapse.open .tc-card:nth-child(2){ transition-delay:.08s; }
+  .tc-collapse.open .tc-card:nth-child(3){ transition-delay:.16s; }
+  .tc-card:hover{ border-color:var(--gold); box-shadow:0 24px 44px -30px rgba(15,156,140,.55); }
+  .tc-q{ width:30px; height:30px; color:var(--gold); opacity:.9; margin-bottom:16px; }
+  .tc-hook{ font-family:var(--font-display); font-size:1.28rem; line-height:1.22; font-weight:600; color:var(--heading); margin-bottom:12px; letter-spacing:-.01em; }
+  .tc-card blockquote{ font-size:.93rem; line-height:1.62; color:var(--ink-soft); margin:0 0 22px; max-width:none; padding:0; flex:1; }
+  .tc-card figcaption{ display:flex; align-items:center; gap:12px; padding-top:18px; border-top:1px solid var(--surface-border); }
+  .tc-av{ width:38px; height:38px; border-radius:50%; background:var(--gold); color:#0E1113; font-weight:800; font-size:.95rem; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .tc-who{ display:flex; flex-direction:column; min-width:0; }
+  .tc-who cite{ font-style:normal; font-weight:700; font-size:.88rem; color:var(--heading); }
+  .tc-who em{ font-style:normal; font-family:var(--font-mono); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); margin-top:2px; }
+  @media (max-width:980px){ .tc-grid{ grid-template-columns:1fr; } }
+  @media (max-width:560px){
+    .tc-bar{ padding:22px 20px; }
+    .tc-toggle{ width:100%; justify-content:center; }
+    .tc-card{ padding:24px 20px 20px; }
+  }
 </style>
 </head>
 <body>
@@ -2154,14 +2190,50 @@
     </div>
   </section>
 
-  <!-- TESTIMONIAL -->
-  <section class="section-tight">
+  <!-- TESTIMONIALS (hidden by default — opens with the button) -->
+  <section class="section-tight" id="testimonials">
     <div class="wrap">
-      <div class="testi reveal-zoom">
-        <div class="testi-mark">&ldquo;</div>
-        <div>
-          <blockquote data-t="testi.quote">Mr. Del Rebese is one of my patients. As a dentist, having an online website is very important in ensuring the reliability and legitimacy of the clinic. He helped make our clinic's website more organized, accessible, and informative. Thank you for your talent, knowledge, and initiative.</blockquote>
-          <cite>— AFJ Medina Dental Clinic</cite>
+      <div class="tc-bar reveal">
+        <div class="tc-bar-text">
+          <div class="eyebrow" data-t="testi.eyebrow">Client feedback</div>
+          <h2 data-t="testi.h2">Don't just take my word for it</h2>
+        </div>
+        <button type="button" class="tc-toggle" id="tcToggle" aria-expanded="false" aria-controls="tcPanel">
+          <span class="tc-lbl-show" data-t="testi.show">Read client testimonials</span>
+          <span class="tc-lbl-hide" data-t="testi.hide">Hide testimonials</span>
+          <svg viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+
+      <div class="tc-collapse" id="tcPanel" role="region" aria-label="Client testimonials">
+        <div class="tc-inner">
+          <div class="tc-grid">
+
+            <!-- Malipot Chicken — DRAFT wording: replace with the owner's real feedback before publishing -->
+            <figure class="tc-card">
+              <svg class="tc-q" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.2 6C4.9 7.3 3.5 9.5 3.5 12.4V18h6v-6H6.3c.1-1.6.9-2.8 2.4-3.6L7.2 6Zm9.3 0c-2.3 1.3-3.7 3.5-3.7 6.4V18h6v-6h-3.2c.1-1.6.9-2.8 2.4-3.6L16.5 6Z"/></svg>
+              <p class="tc-hook" data-t="testi.m.hook">Ordering just got a whole lot easier.</p>
+              <blockquote data-t="testi.m.quote">Customers can now see what we sell and order in one place. The site looks as fresh and clean as our chicken, and it makes us look like a serious brand.</blockquote>
+              <figcaption><span class="tc-av">M</span><span class="tc-who"><cite>Malipot Chicken</cite><em data-t="work.chicken.tag">Food business</em></span></figcaption>
+            </figure>
+
+            <!-- JM Plumbing Services — DRAFT wording: replace with the owner's real feedback before publishing -->
+            <figure class="tc-card">
+              <svg class="tc-q" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.2 6C4.9 7.3 3.5 9.5 3.5 12.4V18h6v-6H6.3c.1-1.6.9-2.8 2.4-3.6L7.2 6Zm9.3 0c-2.3 1.3-3.7 3.5-3.7 6.4V18h6v-6h-3.2c.1-1.6.9-2.8 2.4-3.6L16.5 6Z"/></svg>
+              <p class="tc-hook" data-t="testi.j.hook">Searches are turning into service calls.</p>
+              <blockquote data-t="testi.j.quote">People looking for a plumber can now find us and reach us right away. The site is simple, professional, and makes it easy to ask for a quote.</blockquote>
+              <figcaption><span class="tc-av">J</span><span class="tc-who"><cite>JM Plumbing Services</cite><em data-t="work.plumbing.tag">Home services</em></span></figcaption>
+            </figure>
+
+            <!-- AFJ Medina Dental Clinic — original testimonial (unchanged wording) -->
+            <figure class="tc-card">
+              <svg class="tc-q" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.2 6C4.9 7.3 3.5 9.5 3.5 12.4V18h6v-6H6.3c.1-1.6.9-2.8 2.4-3.6L7.2 6Zm9.3 0c-2.3 1.3-3.7 3.5-3.7 6.4V18h6v-6h-3.2c.1-1.6.9-2.8 2.4-3.6L16.5 6Z"/></svg>
+              <p class="tc-hook" data-t="testi.a.hook">A clinic website patients can trust.</p>
+              <blockquote data-t="testi.quote">Mr. Del Rebese is one of my patients. As a dentist, having an online website is very important in ensuring the reliability and legitimacy of the clinic. He helped make our clinic's website more organized, accessible, and informative. Thank you for your talent, knowledge, and initiative.</blockquote>
+              <figcaption><span class="tc-av">A</span><span class="tc-who"><cite>AFJ Medina Dental Clinic</cite><em data-t="work.dental.tag">Dental clinic</em></span></figcaption>
+            </figure>
+
+          </div>
         </div>
       </div>
     </div>
@@ -2285,6 +2357,10 @@
       "domain.caption.custom":"A custom domain like <strong>afjmedina.com</strong> looks more established and trustworthy in search results than a free subdomain — available as an add-on for ₱1,000/year.",
       "domain.caption.free":"A free subdomain like <strong>afjmedinadental.netlify.app</strong> works fine to get started, but shows Netlify's name instead of the clinic's own brand.",
       "testi.quote":"Mr. Del Rebese is one of my patients. As a dentist, having an online website is very important in ensuring the reliability and legitimacy of the clinic. He helped make our clinic's website more organized, accessible, and informative. Thank you for your talent, knowledge, and initiative.",
+      "testi.eyebrow":"Client feedback", "testi.h2":"Don't just take my word for it", "testi.show":"Read client testimonials", "testi.hide":"Hide testimonials",
+      "testi.m.hook":"Ordering just got a whole lot easier.", "testi.m.quote":"Customers can now see what we sell and order in one place. The site looks as fresh and clean as our chicken, and it makes us look like a serious brand.",
+      "testi.j.hook":"Searches are turning into service calls.", "testi.j.quote":"People looking for a plumber can now find us and reach us right away. The site is simple, professional, and makes it easy to ask for a quote.",
+      "testi.a.hook":"A clinic website patients can trust.",
       "cta.eyebrow":"Let's talk", "cta.h2":"Ready to grow your business online?",
       "cta.p":"Let's build a website that gets you found, trusted, and chosen by more customers.",
       "cta.btn":"Share Your Business Details",
@@ -2365,6 +2441,10 @@
       "domain.caption.custom":"Ang custom domain gaya ng <strong>afjmedina.com</strong> ay mas mukhang established at mapagkakatiwalaan sa search results kaysa sa libreng subdomain — available bilang add-on sa ₱1,000/taon.",
       "domain.caption.free":"Okay lang ang libreng subdomain gaya ng <strong>afjmedinadental.netlify.app</strong> sa simula, pero pangalan ng Netlify ang lalabas imbes na sariling brand ng clinic.",
       "testi.quote":"Isa si Mr. Del Rebese sa mga pasyente ko. Bilang dentista, mahalagang-mahalaga ang pagkakaroon ng website para masiguro ang kredibilidad at legitimacy ng clinic. Tinulungan niya kaming gawing mas organisado, accessible, at informative ang website ng clinic namin. Salamat sa talento, kaalaman, at inisyatiba mo.",
+      "testi.eyebrow":"Feedback ng mga kliyente", "testi.h2":"Huwag mo lang akong paniwalaan", "testi.show":"Basahin ang mga testimonial", "testi.hide":"Itago ang mga testimonial",
+      "testi.m.hook":"Mas madali na ang pag-order.", "testi.m.quote":"Nakikita na ng mga customer ang mga binebenta namin at nakakapag-order sila sa iisang lugar. Kasing-fresh at kasing-linis ng manok namin ang itsura ng site, at mukha na kaming seryosong brand.",
+      "testi.j.hook":"Ang mga search ay nagiging service call na.", "testi.j.quote":"Mas madali na kaming mahanap ng mga naghahanap ng tubero at agad nila kaming nakokontak. Simple at propesyonal ang site, at madaling humingi ng quote.",
+      "testi.a.hook":"Website ng clinic na mapagkakatiwalaan ng mga pasyente.",
       "cta.eyebrow":"Mag-usap tayo", "cta.h2":"Handa ka na bang palaguin ang negosyo mo online?",
       "cta.p":"Gumawa tayo ng website na magpapahanap, magpapatiwala, at magpapapili sa'yo ng mas maraming customer.",
       "cta.btn":"Ibahagi ang Detalye ng Negosyo Mo",
@@ -2586,6 +2666,18 @@
     });
   }, { threshold: 0.15, rootMargin: "0px 0px -8% 0px" });
   revealEls.forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+<script>
+(function(){
+  var btn=document.getElementById("tcToggle"), panel=document.getElementById("tcPanel");
+  if(!btn||!panel) return;
+  btn.addEventListener("click", function(){
+    var open=btn.getAttribute("aria-expanded")!=="true";
+    btn.setAttribute("aria-expanded", open?"true":"false");
+    panel.classList.toggle("open", open);
+  });
 })();
 </script>
 

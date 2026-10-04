@@ -2102,6 +2102,53 @@
     .price-life-title{ font-size:1.08rem; }
     .price-life-sub{ font-size:.8rem; }
   }
+
+  /* ---------- hero image: smaller, undistorted, phone-first polish ---------- */
+  .hero-showcase-wrap{ margin-top:44px; }
+  .device-scene{ max-width:640px; padding:0; }
+  .scene-glow{
+    inset:-14% -8%;
+    background:
+      radial-gradient(closest-side at 72% 40%, rgba(15,156,140,.38), transparent 70%),
+      radial-gradient(closest-side at 18% 88%, rgba(127,223,207,.16), transparent 70%);
+    filter: blur(18px);
+  }
+  .hero-photo{
+    width:100%;
+    max-width:640px;
+    height:auto;                       /* fixes stretching caused by the height="558" attribute */
+    aspect-ratio:1024 / 558;
+    object-fit:cover;
+    border-radius:20px;
+    border:1px solid rgba(127,223,207,.35);
+    box-shadow:
+      0 0 0 6px rgba(15,156,140,.08),
+      0 36px 70px -26px rgba(15,156,140,.45),
+      0 26px 50px -26px rgba(0,0,0,.65);
+  }
+  @keyframes heroPhotoFloatSm{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-5px); } }
+
+  @media (max-width:720px){
+    .hero-showcase-wrap{ margin-top:22px; }
+    .device-scene{ max-width:440px; }
+    .hero-photo{
+      max-width:100%;
+      aspect-ratio:4 / 3;              /* tighter crop keeps the monitor and the robot in frame */
+      object-position:72% 50%;
+      border-radius:18px;
+      animation:heroPhotoFloatSm 6s ease-in-out infinite;
+    }
+  }
+  @media (max-width:420px){
+    .device-scene{ max-width:100%; }
+    .hero-photo{
+      border-radius:16px;
+      box-shadow:
+        0 0 0 4px rgba(15,156,140,.08),
+        0 22px 44px -20px rgba(15,156,140,.5),
+        0 18px 34px -20px rgba(0,0,0,.6);
+    }
+  }
 </style>
 </head>
 <body>
@@ -2260,7 +2307,7 @@
               </div>
             </a>
 
-            <a class="work-card" href="https://jmplumbingservices-git-main-delrebese-3379.vercel.app/" target="_blank" rel="noopener noreferrer">
+            <a class="work-card" href="https://jmplumbingservices.vercel.app/" target="_blank" rel="noopener noreferrer">
               <div class="work-preview plumbing">
                 <div class="wp-inner">
                   <span class="wp-tag" data-t="work.plumbing.tag">Home services</span>

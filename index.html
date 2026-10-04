@@ -2058,34 +2058,59 @@
   [data-theme="dark"] .bkd-table .bkt-ok span{ color:#3FCB8E; }
   /* booking demo chooser */
   .bkx{ margin-top:38px; }
-  .bkx-label{ font-family:var(--font-mono); font-size:.82rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--t-acc); margin:0 0 16px; }
+  .bkx-label{ font-family:var(--font-mono); font-size:.74rem; font-weight:500; letter-spacing:.12em; text-transform:uppercase; color:var(--t-acc); margin:0 0 16px; }
   .bkx-grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; }
-  .bkx-card{ display:flex; flex-wrap:wrap; align-content:space-between; align-items:flex-start; gap:20px 18px; width:100%; text-align:left; cursor:pointer; font-family:inherit; background:linear-gradient(135deg,var(--t-chipbg),transparent 65%), var(--t-panel); color:var(--t-head); border:2px solid var(--t-chipline); border-radius:var(--radius); padding:26px 26px; box-shadow:var(--t-shadow-sm); transition:transform var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease); }
-  .bkx-card:hover{ transform:translateY(-3px); border-color:var(--t-glow); box-shadow:0 18px 36px -18px rgba(15,156,140,.55); }
-  .bkx-card[aria-expanded="true"]{ border-color:var(--t-glow); box-shadow:0 0 0 4px var(--t-chipbg), 0 18px 36px -18px rgba(15,156,140,.55); }
-  .bkx-ico{ width:56px; height:56px; border-radius:15px; background:var(--gold); color:#0E1113; display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow:0 10px 22px -10px rgba(15,156,140,.7); }
-  .bkx-ico svg{ width:28px; height:28px; }
+  .bkx-card{ display:flex; flex-wrap:wrap; align-content:space-between; align-items:flex-start; gap:20px 18px; width:100%; text-align:left; cursor:pointer; font-family:inherit; background:var(--t-panel); color:var(--t-head); border:1px solid var(--t-line); border-radius:var(--radius); padding:24px; box-shadow:none; transition:border-color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease); }
+  .bkx-card:hover{ border-color:var(--t-chipline); background:linear-gradient(var(--t-chipbg),var(--t-chipbg)), var(--t-panel); }
+  .bkx-card[aria-expanded="true"]{ border-color:var(--t-chipline); }
+  .bkx-ico{ width:48px; height:48px; border-radius:12px; background:var(--t-chipbg); color:var(--t-acc); border:1px solid var(--t-chipline); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .bkx-ico svg{ width:24px; height:24px; }
   .bkx-body{ display:block; flex:1; min-width:0; }
-  .bkx-title{ display:block; font-family:var(--font-display); font-size:1.38rem; font-weight:700; line-height:1.2; color:var(--t-head); }
-  .bkx-desc{ display:block; margin-top:6px; font-size:.92rem; line-height:1.45; color:var(--t-body); }
-  .bkx-cta{ display:inline-flex; align-items:center; justify-content:center; align-self:stretch; flex:1 1 100%; gap:8px; font-size:.88rem; font-weight:700; color:#0E1113; background:var(--gold); border:2px solid var(--gold); border-radius:999px; padding:11px 20px; white-space:nowrap; box-shadow:0 10px 22px -10px rgba(15,156,140,.7); transition:background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease); }
-  .bkx-cta svg{ width:16px; height:16px; transition:transform var(--dur-fast) var(--ease); }
-  .bkx-card[aria-expanded="true"] .bkx-cta svg{ transform:rotate(180deg); }
-  .bkx-card[aria-expanded="true"] .bkx-cta{ background:transparent; color:var(--t-acc); border-color:var(--t-glow); box-shadow:none; }
+  .bkx-title{ display:block; font-family:var(--font-display); font-size:1.2rem; font-weight:600; line-height:1.25; color:var(--t-head); }
+  .bkx-desc{ display:block; margin-top:4px; font-size:.9rem; line-height:1.5; color:var(--t-body); }
+  .bkx-cta{ display:inline-flex; align-items:center; justify-content:center; align-self:stretch; flex:1 1 100%; gap:6px; font-size:.86rem; font-weight:600; color:var(--t-acc); background:transparent; border:1px solid var(--t-chipline); border-radius:999px; padding:10px 18px; white-space:nowrap; box-shadow:none; transition:background var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease); }
+  .bkx-card:hover .bkx-cta{ background:var(--t-chipbg); border-color:var(--t-glow); }
+  .bkx-cta svg{ width:15px; height:15px; transition:transform var(--dur-fast) var(--ease); }
+  .bkx-card:hover .bkx-cta svg{ transform:translateX(3px); }
+  .bkx-card[aria-expanded="true"] .bkx-cta{ background:var(--t-chipbg); border-color:var(--t-glow); }
   .bkx-cta-hide{ display:none; }
   .bkx-card[aria-expanded="true"] .bkx-cta-show{ display:none; }
   .bkx-card[aria-expanded="true"] .bkx-cta-hide{ display:inline; }
   .bk-panel{ margin-top:40px; }
   .bk-panel[hidden]{ display:none; }
-  .bk-panel.bk-in{ animation:bkPanelIn .45s var(--ease) both; }
-  @keyframes bkPanelIn{ from{ opacity:0; transform:translateY(10px); } to{ opacity:1; transform:none; } }
-  #bkPanelStay > .bkc-head:first-child{ margin-top:0; }
+  .bk-panel.bk-page-in{ animation:bkPageIn .42s var(--ease) both; }
+  .bk-panel.bk-page-out{ animation:bkPageOut .34s var(--ease) both; }
+  @keyframes bkPageIn{ from{ transform:translateX(100%); } to{ transform:none; } }
+  @keyframes bkPageOut{ from{ transform:none; } to{ transform:translateX(100%); } }
+  /* booking examples open as their own page that slides in from the right */
+  .bk-panel.bk-page{
+    position:fixed; inset:0; z-index:80; margin:0; overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch;
+    padding:0 max(20px, calc((100vw - 1120px)/2 + 28px)) 60px;
+    background:
+      radial-gradient(900px 420px at 85% 0%, rgba(15,156,140,.11), transparent 60%),
+      radial-gradient(700px 380px at 0% 100%, rgba(15,156,140,.08), transparent 60%),
+      #F3F8F8;
+    box-shadow:-28px 0 60px -24px rgba(14,17,19,.35);
+  }
+  [data-theme="dark"] .bk-panel.bk-page{
+    background:
+      radial-gradient(900px 420px at 85% 0%, rgba(15,156,140,.20), transparent 60%),
+      radial-gradient(700px 380px at 0% 100%, rgba(127,223,207,.10), transparent 60%),
+      var(--navy-950);
+    box-shadow:-28px 0 60px -24px rgba(0,0,0,.8);
+  }
+  .bk-pagebar{ position:sticky; top:0; z-index:5; padding:calc(14px + env(safe-area-inset-top, 0px)) 0 14px; margin-bottom:22px; background:rgba(243,248,248,.92); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid var(--t-line); }
+  [data-theme="dark"] .bk-pagebar{ background:rgba(14,17,19,.92); }
+  .bk-back{ display:inline-flex; align-items:center; gap:8px; cursor:pointer; font-family:inherit; font-size:.86rem; font-weight:600; color:var(--t-acc); background:transparent; border:1px solid var(--t-chipline); border-radius:999px; padding:8px 16px 8px 12px; transition:background var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease); }
+  .bk-back:hover{ background:var(--t-chipbg); border-color:var(--t-glow); }
+  .bk-back svg{ width:16px; height:16px; }
+  .bk-panel.bk-page > .bkc-head:first-of-type{ margin-top:0; }
   @media (max-width:720px){
     .bkx-grid{ grid-template-columns:minmax(0,1fr); gap:14px; }
-    .bkx-card{ padding:20px 18px; gap:16px; }
-    .bkx-ico{ width:50px; height:50px; }
-    .bkx-title{ font-size:1.22rem; }
-    .bkx-cta{ padding:12px 18px; }
+    .bkx-card{ padding:18px; gap:14px; }
+    .bkx-ico{ width:44px; height:44px; }
+    .bkx-title{ font-size:1.1rem; }
+    .bkx-cta{ padding:10px 16px; }
     .bk-panel{ margin-top:30px; }
   }
   /* pricing: lifetime access highlight */
@@ -2094,7 +2119,7 @@
   .price-life-ico svg{ width:30px; height:30px; }
   .price-life-text{ min-width:0; }
   .price-life-title{ display:block; font-family:var(--font-display); font-size:1.28rem; font-weight:700; line-height:1.15; letter-spacing:-.01em; }
-  .price-life-sub{ display:block; margin-top:5px; font-size:.85rem; line-height:1.4; font-weight:500; color:rgba(14,17,19,.82); }
+  .price-life-sub{ display:none; margin-top:5px; font-size:.85rem; line-height:1.4; font-weight:500; color:rgba(14,17,19,.82); }
   @media (max-width:560px){
     .price-life{ padding:16px 16px; gap:13px; margin-bottom:20px; }
     .price-life-ico{ width:44px; height:44px; border-radius:12px; }
@@ -2149,6 +2174,39 @@
         0 18px 34px -20px rgba(0,0,0,.6);
     }
   }
+
+  /* ---------- "Why a website": show the short title, tap to reveal the meaning ---------- */
+  .pitch-body{ flex:1; min-width:0; }
+  .pitch-item h3{ margin-bottom:0; }
+  .pitch-q{
+    all:unset; box-sizing:border-box; cursor:pointer; width:100%;
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    font:inherit; color:inherit; padding:7px 0; -webkit-tap-highlight-color:transparent;
+  }
+  .pitch-q:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; border-radius:6px; }
+  .pitch-chev{
+    width:22px; height:22px; flex-shrink:0; padding:4px; border-radius:50%;
+    border:1px solid var(--surface-border); color:var(--gold);
+    transition:transform .3s var(--ease), background .3s var(--ease), color .3s var(--ease);
+  }
+  .pitch-q:hover .pitch-chev{ background:var(--gold); color:#fff; }
+  .pitch-q[aria-expanded="true"] .pitch-chev{ transform:rotate(90deg); background:var(--gold); color:#fff; }
+  .pitch-a{
+    display:grid; grid-template-rows:0fr; visibility:hidden;
+    transition:grid-template-rows .4s var(--ease), visibility 0s linear .4s;
+  }
+  .pitch-a > div{ overflow:hidden; min-height:0; }
+  .pitch-a p{ padding-top:2px; }
+  .pitch-q[aria-expanded="true"] + .pitch-a,
+  .pitch-a.open{ grid-template-rows:1fr; visibility:visible; transition:grid-template-rows .4s var(--ease), visibility 0s; }
+  #accS1{ grid-template-rows:1fr; visibility:visible; }
+
+  /* ---------- tap-to-reveal descriptions (reuses the pitch accordion) ---------- */
+  .acc-h{ margin-bottom:0 !important; }
+  .pitch-q.acc-q{ width:auto; max-width:100%; display:inline-flex; gap:12px; text-align:inherit; }
+  .pitch-q.acc-q > span{ min-width:0; }
+  .pitch-head .pitch-q.acc-q{ justify-content:center; }
+  .pitch-q .pitch-chev{ margin-top:0; }
 </style>
 </head>
 <body>
@@ -2205,9 +2263,9 @@
   <!-- HERO -->
   <section class="hero">
     <div class="wrap hero-top reveal in">
-      <div class="eyebrow" data-t="hero.eyebrow">Web design · Philippines</div>
-      <h1 data-t="hero.h1">Websites for <em>small businesses.</em></h1>
-      <p class="sub" data-t="hero.sub">Clinics, food businesses, and home services. See the live sites below.</p>
+      <div class="eyebrow" data-t="hero.eyebrow">Trusted Web Design · Philippines</div>
+      <h1 data-t="hero.h1">Professional websites for <em>small businesses.</em></h1>
+      <p class="sub" data-t="hero.sub">Clinics, food businesses, home services, and more. See the live sites below.</p>
       <div class="hero-actions" style="margin-bottom:10px;">
         <a href="https://forms.gle/7BQhny5Px3HpVjaEA" class="btn btn-gold" target="_blank" rel="noopener noreferrer">
           <svg viewBox="0 0 24 24" fill="none" style="width:18px;height:18px;flex-shrink:0;"><rect x="6" y="3" width="12" height="18" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M9 3.5h6v2a1 1 0 0 1-1 1H10a1 1 0 0 1-1-1v-2Z" stroke="currentColor" stroke-width="1.8"/><path d="M9 12h6M9 15.5h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
@@ -2234,21 +2292,21 @@
     <div class="wrap">
       <div class="pitch-head reveal">
         <div class="eyebrow" data-t="pitch.eyebrow">Why a website</div>
-        <h2 data-t="pitch.h2">Your customers are searching. <em>Can they find you?</em></h2>
-        <p data-t="pitch.p">A website works for your business 24/7. It shows what you offer, where you are, and how to reach you, even while you sleep.</p>
+        <h2 class="acc-h"><button type="button" class="pitch-q acc-q" aria-expanded="false" aria-controls="accS1"><span data-t="pitch.h2">Your customers are searching. <em>Can they find you?</em></span><svg class="pitch-chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h2>
+        <div class="pitch-a" id="accS1"><div><p data-t="pitch.p">A website works for your business 24/7. It shows what you offer, where you are, and how to reach you, even while you sleep.</p></div></div>
       </div>
       <div class="pitch-grid">
         <div class="pitch-item reveal">
           <span class="pitch-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.9"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></span>
-          <div><h3 data-t="pitch.c1h">Get found</h3><p data-t="pitch.c1p">People check Google first. Show up when they search.</p></div>
+          <div class="pitch-body"><h3><button type="button" class="pitch-q" aria-expanded="false" aria-controls="pitchA1"><span data-t="pitch.c1h">Get found</span><svg class="pitch-chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="pitch-a" id="pitchA1"><div><p data-t="pitch.c1p">People check Google first. Show up when they search.</p></div></div></div>
         </div>
         <div class="pitch-item reveal">
           <span class="pitch-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M9 12l2.2 2.2L15.5 10" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <div><h3 data-t="pitch.c2h">Look trusted</h3><p data-t="pitch.c2p">A real website makes customers feel safe choosing you.</p></div>
+          <div class="pitch-body"><h3><button type="button" class="pitch-q" aria-expanded="false" aria-controls="pitchA2"><span data-t="pitch.c2h">Look trusted</span><svg class="pitch-chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="pitch-a" id="pitchA2"><div><p data-t="pitch.c2p">A real website makes customers feel safe choosing you.</p></div></div></div>
         </div>
         <div class="pitch-item reveal">
           <span class="pitch-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H8l-4 4V5z" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg></span>
-          <div><h3 data-t="pitch.c3h">Get more customers</h3><p data-t="pitch.c3p">Calls, messages and bookings come straight to you.</p></div>
+          <div class="pitch-body"><h3><button type="button" class="pitch-q" aria-expanded="false" aria-controls="pitchA3"><span data-t="pitch.c3h">Get more customers</span><svg class="pitch-chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3><div class="pitch-a" id="pitchA3"><div><p data-t="pitch.c3p">Calls, messages and bookings come straight to you.</p></div></div></div>
         </div>
       </div>
     </div>
@@ -2353,8 +2411,8 @@
     <div class="wrap">
       <div class="section-head reveal">
         <div class="eyebrow" data-t="bkd.eyebrow">Booking system</div>
-        <h2 data-t="bkd.h2">Every booking <em>lands in your spreadsheet</em> — automatically</h2>
-        <p data-t="bkd.sub">Here's what a real booking looks like. When your customer submits the form, the details appear in your Google Sheet within moments — no typing, no missed messages.</p>
+        <h2 class="acc-h"><button type="button" class="pitch-q acc-q" aria-expanded="false" aria-controls="accS2"><span data-t="bkd.h2">Every booking <em>lands in your spreadsheet</em> — automatically</span><svg class="pitch-chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h2>
+        <div class="pitch-a" id="accS2"><div><p data-t="bkd.sub">Here's what a real booking looks like. When your customer submits the form, the details appear in your Google Sheet within moments — no typing, no missed messages.</p></div></div>
       </div>
 
       <div class="bkx reveal" role="group" aria-labelledby="bkxLabel">
@@ -2366,7 +2424,7 @@
             <span class="bkx-title" data-t="bkx.c1t">Clinics &amp; appointments</span>
             <span class="bkx-desc" data-t="bkx.c1d">Appointment booking with date and time slots.</span>
           </span>
-          <span class="bkx-cta"><span class="bkx-cta-show" data-t="bkx.show">View example</span><span class="bkx-cta-hide" data-t="bkx.hide">Hide example</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="bkx-cta"><span class="bkx-cta-show" data-t="bkx.show">View example</span><span class="bkx-cta-hide" data-t="bkx.hide">Hide example</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </button>
         <button type="button" class="bkx-card" id="bkxStay" aria-expanded="false" aria-controls="bkPanelStay">
           <span class="bkx-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M3.5 18.5V6M3.5 14h17v4.5M20.5 14v-2.2c0-1.2-1-2.3-2.3-2.3H11V14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7.2" cy="10.6" r="1.7" stroke="currentColor" stroke-width="1.6"/></svg></span>
@@ -2374,12 +2432,13 @@
             <span class="bkx-title" data-t="bkx.c2t">Stays &amp; rentals</span>
             <span class="bkx-desc" data-t="bkx.c2d">Check-in and check-out bookings for transients and rentals.</span>
           </span>
-          <span class="bkx-cta"><span class="bkx-cta-show" data-t="bkx.show">View example</span><span class="bkx-cta-hide" data-t="bkx.hide">Hide example</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="bkx-cta"><span class="bkx-cta-show" data-t="bkx.show">View example</span><span class="bkx-cta-hide" data-t="bkx.hide">Hide example</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </button>
         </div>
       </div>
 
-      <div class="bk-panel" id="bkPanelClinic" hidden>
+      <div class="bk-panel bk-page" id="bkPanelClinic" hidden>
+      <div class="bk-pagebar"><button type="button" class="bk-back"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-t="bkx.back">Back</span></button></div>
       <div class="bkd-flow reveal" role="group" aria-label="Example: a booking form submission appearing in a spreadsheet">
         <!-- Step 1: the form -->
         <div class="bkd-col">
@@ -2479,8 +2538,8 @@
       <!-- AVAILABILITY CONTROL -->
       <div class="bkc-head section-head reveal">
         <div class="eyebrow" data-t="bkc.eyebrow">You're in control</div>
-        <h3 data-t="bkc.h3">Not available that day? <em>Just block it.</em></h3>
-        <p data-t="bkc.p">Going on leave or have a long procedure? Add a row to your Availability sheet. The booking form updates by itself — customers simply can't pick the dates or times you've blocked.</p>
+        <h3 class="acc-h"><button type="button" class="pitch-q acc-q" aria-expanded="false" aria-controls="accS3"><span data-t="bkc.h3">Not available that day? <em>Just block it.</em></span><svg class="pitch-chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3>
+        <div class="pitch-a" id="accS3"><div><p data-t="bkc.p">Going on leave or have a long procedure? Add a row to your Availability sheet. The booking form updates by itself — customers simply can't pick the dates or times you've blocked.</p></div></div>
       </div>
 
       <div class="bkc-flow reveal" role="group" aria-label="Example: blocking a date in the availability sheet makes it unavailable in the booking form">
@@ -2563,12 +2622,13 @@
 
       </div>
 
-      <div class="bk-panel" id="bkPanelStay" hidden>
+      <div class="bk-panel bk-page" id="bkPanelStay" hidden>
+      <div class="bk-pagebar"><button type="button" class="bk-back"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-t="bkx.back">Back</span></button></div>
       <!-- TRANSIENT / STAY BOOKING EXAMPLE -->
       <div class="bkc-head section-head reveal">
         <div class="eyebrow" data-t="bkt.eyebrow">For stays &amp; rentals</div>
-        <h3 data-t="bkt.h3">Run a transient or staycation? <em>Bookings work the same way.</em></h3>
-        <p data-t="bkt.p">Guests pick their check-in and check-out dates. Each request lands in your sheet with the guest count, room or unit, and number of nights — ready for you to confirm.</p>
+        <h3 class="acc-h"><button type="button" class="pitch-q acc-q" aria-expanded="false" aria-controls="accS4"><span data-t="bkt.h3">Run a transient or staycation? <em>Bookings work the same way.</em></span><svg class="pitch-chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3>
+        <div class="pitch-a" id="accS4"><div><p data-t="bkt.p">Guests pick their check-in and check-out dates. Each request lands in your sheet with the guest count, room or unit, and number of nights — ready for you to confirm.</p></div></div>
       </div>
 
       <div class="bkd-flow reveal" role="group" aria-label="Example: a stay booking form submission appearing in a spreadsheet">
@@ -2670,8 +2730,8 @@
       <!-- STAY AVAILABILITY CONTROL -->
       <div class="bkc-head section-head reveal">
         <div class="eyebrow" data-t="bkc.eyebrow">You're in control</div>
-        <h3 data-t="bkt.a.h3">Room under renovation? <em>Just block it.</em></h3>
-        <p data-t="bkt.a.p">Closing a room for renovation, repairs or private use? Add a row to your Availability sheet. The booking form updates by itself — guests simply can't pick the dates you've blocked.</p>
+        <h3 class="acc-h"><button type="button" class="pitch-q acc-q" aria-expanded="false" aria-controls="accS5"><span data-t="bkt.a.h3">Room under renovation? <em>Just block it.</em></span><svg class="pitch-chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3>
+        <div class="pitch-a" id="accS5"><div><p data-t="bkt.a.p">Closing a room for renovation, repairs or private use? Add a row to your Availability sheet. The booking form updates by itself — guests simply can't pick the dates you've blocked.</p></div></div>
       </div>
 
       <div class="bkc-flow reveal" role="group" aria-label="Example: blocking a room and dates in the availability sheet makes them unavailable in the stay booking form">
@@ -2756,28 +2816,28 @@
       <ul class="bkd-points stagger">
         <li class="reveal-zoom" style="--i:0">
           <span class="bkd-pico"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h10M4 18h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="m16 15 2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <h3 data-t="bkd.p1h">No manual typing</h3>
-          <p data-t="bkd.p1p">Every answer your customer gives lands in its own column — name, phone, service, date and time.</p>
+          <h3 class="acc-h"><button type="button" class="pitch-q" aria-expanded="false" aria-controls="accP1"><span data-t="bkd.p1h">No manual typing</span><svg class="pitch-chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3>
+          <div class="pitch-a" id="accP1"><div><p data-t="bkd.p1p">Every answer your customer gives lands in its own column — name, phone, service, date and time.</p></div></div>
         </li>
         <li class="reveal-zoom" style="--i:1">
           <span class="bkd-pico"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M8 9h8M8 13h8M8 17h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-          <h3 data-t="bkd.p2h">Organized, instant records</h3>
-          <p data-t="bkd.p2p">Each booking gets its own ID and timestamp, so nothing gets lost in messages or notebooks.</p>
+          <h3 class="acc-h"><button type="button" class="pitch-q" aria-expanded="false" aria-controls="accP2"><span data-t="bkd.p2h">Organized, instant records</span><svg class="pitch-chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3>
+          <div class="pitch-a" id="accP2"><div><p data-t="bkd.p2p">Each booking gets its own ID and timestamp, so nothing gets lost in messages or notebooks.</p></div></div>
         </li>
         <li class="reveal-zoom" style="--i:2">
           <span class="bkd-pico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <h3 data-t="bkd.p3h">Track every status</h3>
-          <p data-t="bkd.p3p">Update each booking's status from a simple dropdown, starting as Pending.</p>
+          <h3 class="acc-h"><button type="button" class="pitch-q" aria-expanded="false" aria-controls="accP3"><span data-t="bkd.p3h">Track every status</span><svg class="pitch-chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3>
+          <div class="pitch-a" id="accP3"><div><p data-t="bkd.p3p">Update each booking's status from a simple dropdown, starting as Pending.</p></div></div>
         </li>
         <li class="reveal-zoom" style="--i:3">
           <span class="bkd-pico"><svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5" width="17" height="15" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M8 3v4M16 3v4M3.5 10h17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-          <h3 data-t="bkd.p4h">Only open dates &amp; times</h3>
-          <p data-t="bkd.p4p">Customers choose from available dates and time slots, which helps you avoid double bookings.</p>
+          <h3 class="acc-h"><button type="button" class="pitch-q" aria-expanded="false" aria-controls="accP4"><span data-t="bkd.p4h">Only open dates &amp; times</span><svg class="pitch-chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3>
+          <div class="pitch-a" id="accP4"><div><p data-t="bkd.p4p">Customers choose from available dates and time slots, which helps you avoid double bookings.</p></div></div>
         </li>
       </ul>
 
       <div class="bkd-foot reveal">
-        <p class="bkd-note" data-t="bkd.note">Sample entry shown for illustration. This is the same booking system running live on the AFJ Medina Dental Clinic website.</p>
+        <p class="bkd-note" data-t="bkd.note">Sample entry. Live on the AFJ Medina Dental Clinic website.</p>
         <a href="https://forms.gle/7BQhny5Px3HpVjaEA" class="btn btn-gold" target="_blank" rel="noopener noreferrer"><span data-t="bkd.cta">Get a booking form for your business</span></a>
       </div>
     </div>
@@ -2829,7 +2889,7 @@
           </div>
         </div>
 
-        <p class="domain-caption" id="domainCaption" data-t="domain.caption.custom">A custom domain like <strong>afjmedina.com</strong> looks more established and trustworthy in search results than a free subdomain — available as an add-on for ₱1,000/year.</p>
+        <p class="domain-caption" id="domainCaption" data-t="domain.caption.custom">A custom domain like <strong>afjmedina.com</strong> looks more trustworthy in search results than a free subdomain. Add-on: ₱1,000/year.</p>
       </div>
     </div>
   </section>
@@ -2929,8 +2989,8 @@
       <div class="cta-final reveal-zoom">
         <div>
           <div class="eyebrow" data-t="cta.eyebrow">Let's talk</div>
-          <h2 data-t="cta.h2">Ready to grow your business online?</h2>
-          <p data-t="cta.p">Let's build a website that gets you found, trusted, and chosen by more customers.</p>
+          <h2 class="acc-h"><button type="button" class="pitch-q acc-q" aria-expanded="false" aria-controls="accC1"><span data-t="cta.h2">Ready to grow your business online?</span><svg class="pitch-chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h2>
+          <div class="pitch-a" id="accC1"><div><p data-t="cta.p">Let's build a website that gets you found, trusted, and chosen by more customers.</p></div></div>
           <a href="https://forms.gle/7BQhny5Px3HpVjaEA" class="btn btn-gold" style="margin-top:22px;" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" fill="none" style="width:18px;height:18px;flex-shrink:0;"><rect x="6" y="3" width="12" height="18" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M9 3.5h6v2a1 1 0 0 1-1 1H10a1 1 0 0 1-1-1v-2Z" stroke="currentColor" stroke-width="1.8"/><path d="M9 12h6M9 15.5h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
             <span data-t="cta.btn">Share Your Business Details</span>
@@ -2971,9 +3031,9 @@
     en: {
       "nav.services":"Services", "nav.work":"Work", "nav.process":"Process", "nav.pricing":"Pricing", "nav.contact":"Contact", "nav.cta":"Get In Touch",
       "aria.langSelector":"Language selector", "aria.openMenu":"Open menu", "aria.closeMenu":"Close menu", "aria.domainCompare":"Compare with and without a custom domain", "aria.themeToggle":"Toggle dark mode",
-      "hero.eyebrow":"Web design · Philippines",
-      "hero.h1":"Websites for <em>small businesses.</em>",
-      "hero.sub":"Clinics, food businesses, and home services. See the live sites below.",
+      "hero.eyebrow":"Trusted Web Design · Philippines",
+      "hero.h1":"Professional websites for <em>small businesses.</em>",
+      "hero.sub":"Clinics, food businesses, home services, and more. See the live sites below.",
       "hero.lede":"A modern website that helps your business stand out online and makes it easy for customers to reach you.",
       "hero.cta1":"Share Your Business Details", "hero.cta2":"See Pricing",
       "hero.badge1":"Modern design", "hero.badge2":"Mobile friendly", "hero.badge3":"SEO optimized",
@@ -3001,7 +3061,7 @@
       "proc.s4.h":"Launch", "proc.s4.p":"Your website goes online.",
       "bkt.eyebrow":"For stays &amp; rentals", "bkt.h3":"Run a transient or staycation? <em>Bookings work the same way.</em>", "bkt.p":"Guests pick their check-in and check-out dates. Each request lands in your sheet with the guest count, room or unit, and number of nights — ready for you to confirm.", "bkt.formTitle":"Book a Stay", "bkt.fGuests":"Guests", "bkt.fUnit":"Room / unit", "bkt.fIn":"Check-in", "bkt.fOut":"Check-out", "bkt.note":"Sample entry shown for illustration.",
       "bkt.a.h3":"Room under renovation? <em>Just block it.</em>", "bkt.a.p":"Closing a room for renovation, repairs or private use? Add a row to your Availability sheet. The booking form updates by itself — guests simply can't pick the dates you've blocked.", "bkt.a.step1":"You block a room and dates in your sheet", "bkt.a.r1":"<strong>Family Room · Oct 20–25 · Renovation</strong> — those dates show as Unavailable on the calendar, so no one can book them.", "bkt.a.r2":"<strong>Studio Unit · Oct 28–29 · Maintenance</strong> — only that unit is blocked; your other rooms stay open for booking.",
-      "bkx.pick":"Choose a business type to see its booking system", "bkx.c1t":"Clinics &amp; appointments", "bkx.c1d":"Appointment booking with date and time slots.", "bkx.c2t":"Stays &amp; rentals", "bkx.c2d":"Check-in and check-out bookings for transients and rentals.", "bkx.show":"View example", "bkx.hide":"Hide example",
+      "bkx.pick":"Choose a business type to see its booking system", "bkx.c1t":"Clinics &amp; appointments", "bkx.c1d":"Appointment booking with date and time slots.", "bkx.c2t":"Stays &amp; rentals", "bkx.c2d":"Check-in and check-out bookings for transients and rentals.", "bkx.show":"View example", "bkx.hide":"Hide example", "bkx.back":"Back",
       "bkd.eyebrow":"Booking system", "bkd.h2":"Every booking <em>lands in your spreadsheet</em> — automatically",
       "bkd.sub":"Here's what a real booking looks like. When your customer submits the form, the details appear in your Google Sheet within moments — no typing, no missed messages.",
       "bkd.step1":"Customer fills out the form", "bkd.step2":"It appears in your sheet instantly",
@@ -3011,7 +3071,7 @@
       "bkd.p2h":"Organized, instant records", "bkd.p2p":"Each booking gets its own ID and timestamp, so nothing gets lost in messages or notebooks.",
       "bkd.p3h":"Track every status", "bkd.p3p":"Update each booking's status from a simple dropdown, starting as Pending.",
       "bkd.p4h":"Only open dates &amp; times", "bkd.p4p":"Customers choose from available dates and time slots, which helps you avoid double bookings.",
-      "bkd.note":"Sample entry shown for illustration. This is the same booking system running live on the AFJ Medina Dental Clinic website.",
+      "bkd.note":"Sample entry. Live on the AFJ Medina Dental Clinic website.",
       "bkd.cta":"Get a booking form for your business",
       "bkc.eyebrow":"You're in control", "bkc.h3":"Not available that day? <em>Just block it.</em>",
       "bkc.p":"Going on leave or have a long procedure? Add a row to your Availability sheet. The booking form updates by itself — customers simply can't pick the dates or times you've blocked.",
@@ -3047,7 +3107,7 @@
       "work.dentalking.desc":"A modern, full-service clinic site covering veneers, braces, and restorations.",
       "proof.label":"Real result — live on Google", "proof.badge":"Indexed & ranking on Google Search",
       "domain.tab.custom":"With custom domain", "domain.tab.free":"Without (free subdomain)",
-      "domain.caption.custom":"A custom domain like <strong>afjmedina.com</strong> looks more established and trustworthy in search results than a free subdomain — available as an add-on for ₱1,000/year.",
+      "domain.caption.custom":"A custom domain like <strong>afjmedina.com</strong> looks more trustworthy in search results than a free subdomain. Add-on: ₱1,000/year.",
       "domain.caption.free":"A free subdomain like <strong>afjmedinadental.netlify.app</strong> works fine to get started, but shows Netlify's name instead of the clinic's own brand.",
       "testi.quote":"Mr. Del Rebese is one of my patients. As a dentist, having an online website is very important in ensuring the reliability and legitimacy of the clinic. He helped make our clinic's website more organized, accessible, and informative. Thank you for your talent, knowledge, and initiative.",
       "testi.eyebrow":"Client feedback", "testi.h2":"Don't just take my word for it", "testi.show":"Read client testimonials", "testi.hide":"Hide testimonials",
@@ -3064,9 +3124,9 @@
     fil: {
       "nav.services":"Serbisyo", "nav.work":"Mga Proyekto", "nav.process":"Proseso", "nav.pricing":"Presyo", "nav.contact":"Kontak", "nav.cta":"Kausapin Ako",
       "aria.langSelector":"Pumili ng wika", "aria.openMenu":"Buksan ang menu", "aria.closeMenu":"Isara ang menu", "aria.domainCompare":"Ihambing ang may custom domain at wala", "aria.themeToggle":"Ilipat sa dark mode",
-      "hero.eyebrow":"Web design · Pilipinas",
-      "hero.h1":"Website para sa <em>maliliit na negosyo.</em>",
-      "hero.sub":"Mga clinic, food business, at home services. Tingnan ang mga live na site sa ibaba.",
+      "hero.eyebrow":"Maaasahang Web Design · Pilipinas",
+      "hero.h1":"Propesyonal na website para sa <em>maliliit na negosyo.</em>",
+      "hero.sub":"Clinic, food business, home services, at iba pa. Tingnan ang mga live na site sa ibaba.",
       "hero.lede":"Isang modernong website na tumutulong sa negosyo mong mapansin online at madaling maabot ng customer.",
       "hero.cta1":"Ibahagi ang Detalye ng Negosyo Mo", "hero.cta2":"Tingnan ang Presyo",
       "hero.badge1":"Modernong disenyo", "hero.badge2":"Gumagana sa mobile", "hero.badge3":"SEO-ready",
@@ -3094,7 +3154,7 @@
       "proc.s4.h":"Paglabas", "proc.s4.p":"Mapupublish na ang website mo.",
       "bkt.eyebrow":"Para sa transient at rental", "bkt.h3":"May transient o staycation? <em>Ganito rin ang booking.</em>", "bkt.p":"Pipili ang guest ng check-in at check-out. Lalabas sa sheet mo ang bawat request kasama ang bilang ng guest, kuwarto o unit, at bilang ng gabi — handa mo nang i-confirm.", "bkt.formTitle":"Mag-book ng Stay", "bkt.fGuests":"Guests", "bkt.fUnit":"Kuwarto / unit", "bkt.fIn":"Check-in", "bkt.fOut":"Check-out", "bkt.note":"Halimbawang entry para sa ilustrasyon.",
       "bkt.a.h3":"May kuwartong ire-renovate? <em>I-block mo lang.</em>", "bkt.a.p":"Isasara ang kuwarto para sa renovation, ayos o pansariling gamit? Magdagdag ng row sa Availability sheet mo. Kusang mag-a-update ang booking form — hindi na mapipili ng guest ang mga petsang na-block mo.", "bkt.a.step1":"I-block ang kuwarto at petsa sa sheet mo", "bkt.a.r1":"<strong>Family Room · Okt 20–25 · Renovation</strong> — lalabas na Unavailable ang mga petsang iyon sa calendar, kaya walang makakapag-book.", "bkt.a.r2":"<strong>Studio Unit · Okt 28–29 · Maintenance</strong> — ang unit lang na iyon ang naka-block; bukas pa rin ang iba mong kuwarto.",
-      "bkx.pick":"Pumili ng uri ng negosyo para makita ang booking system nito", "bkx.c1t":"Mga clinic at appointment", "bkx.c1d":"Booking ng appointment na may petsa at oras.", "bkx.c2t":"Mga stay at rental", "bkx.c2d":"Booking na may check-in at check-out para sa transient at rental.", "bkx.show":"Tingnan ang halimbawa", "bkx.hide":"Itago ang halimbawa",
+      "bkx.pick":"Pumili ng uri ng negosyo para makita ang booking system nito", "bkx.c1t":"Mga clinic at appointment", "bkx.c1d":"Booking ng appointment na may petsa at oras.", "bkx.c2t":"Mga stay at rental", "bkx.c2d":"Booking na may check-in at check-out para sa transient at rental.", "bkx.show":"Tingnan ang halimbawa", "bkx.hide":"Itago ang halimbawa", "bkx.back":"Bumalik",
       "bkd.eyebrow":"Sistema ng booking", "bkd.h2":"Bawat booking ay <em>awtomatikong mapupunta sa spreadsheet mo</em>",
       "bkd.sub":"Ganito ang itsura ng totoong booking. Kapag nag-submit ng form ang customer mo, lalabas agad ang detalye sa Google Sheet mo — walang tatype, walang mawawalang mensahe.",
       "bkd.step1":"Pupunan ng customer ang form", "bkd.step2":"Lalabas agad ito sa sheet mo",
@@ -3104,7 +3164,7 @@
       "bkd.p2h":"Maayos at agarang records", "bkd.p2p":"May sariling ID at timestamp ang bawat booking, kaya walang nawawala sa mga mensahe o notebook.",
       "bkd.p3h":"Subaybayan ang status", "bkd.p3p":"I-update ang status ng bawat booking gamit ang simpleng dropdown, simula sa Pending.",
       "bkd.p4h":"Bukas na petsa at oras lang", "bkd.p4p":"Pumipili ang customer sa mga available na petsa at oras, kaya mas madaling iwasan ang double booking.",
-      "bkd.note":"Sample na entry lang ito. Ito rin ang booking system na gumagana ngayon sa website ng AFJ Medina Dental Clinic.",
+      "bkd.note":"Sample entry lang. Live na sa website ng AFJ Medina Dental Clinic.",
       "bkd.cta":"Magpagawa ng booking form para sa negosyo mo",
       "bkc.eyebrow":"Ikaw ang may kontrol", "bkc.h3":"Hindi available sa araw na iyon? <em>I-block mo lang.</em>",
       "bkc.p":"May leave o mahabang procedure? Magdagdag lang ng row sa Availability sheet mo. Kusang mag-a-update ang booking form — hindi na mapipili ng mga customer ang mga petsa o oras na na-block mo.",
@@ -3140,7 +3200,7 @@
       "work.dentalking.desc":"Modernong site ng isang full-service clinic — veneers, braces, at restorations.",
       "proof.label":"Tunay na resulta — live na sa Google", "proof.badge":"Naka-index at nagrererank sa Google Search",
       "domain.tab.custom":"May custom domain", "domain.tab.free":"Walang domain (libreng subdomain)",
-      "domain.caption.custom":"Ang custom domain gaya ng <strong>afjmedina.com</strong> ay mas mukhang established at mapagkakatiwalaan sa search results kaysa sa libreng subdomain — available bilang add-on sa ₱1,000/taon.",
+      "domain.caption.custom":"Mas mapagkakatiwalaan sa search results ang custom domain gaya ng <strong>afjmedina.com</strong> kaysa sa libreng subdomain. Add-on: ₱1,000/taon.",
       "domain.caption.free":"Okay lang ang libreng subdomain gaya ng <strong>afjmedinadental.netlify.app</strong> sa simula, pero pangalan ng Netlify ang lalabas imbes na sariling brand ng clinic.",
       "testi.quote":"Isa si Mr. Del Rebese sa mga pasyente ko. Bilang dentista, mahalagang-mahalaga ang pagkakaroon ng website para masiguro ang kredibilidad at legitimacy ng clinic. Tinulungan niya kaming gawing mas organisado, accessible, at informative ang website ng clinic namin. Salamat sa talento, kaalaman, at inisyatiba mo.",
       "testi.eyebrow":"Feedback ng mga kliyente", "testi.h2":"Huwag mo lang akong paniwalaan", "testi.show":"Basahin ang mga testimonial", "testi.hide":"Itago ang mga testimonial",
@@ -3388,28 +3448,53 @@
 (function(){
   var cards=[document.getElementById("bkxClinic"), document.getElementById("bkxStay")];
   if(!cards[0]||!cards[1]) return;
+  var current=null, busy=false, pushed=false;
   function panelOf(c){ return document.getElementById(c.getAttribute("aria-controls")); }
-  function setOpen(card, open){
-    var p=panelOf(card); if(!p) return;
-    card.setAttribute("aria-expanded", open?"true":"false");
-    p.classList.remove("bk-in");
-    p.hidden=!open;
-    if(open){ void p.offsetWidth; p.classList.add("bk-in"); }
+  function openPage(card){
+    var p=panelOf(card); if(!p||current||busy) return;
+    current=card;
+    card.setAttribute("aria-expanded","true");
+    p.classList.remove("bk-page-out");
+    p.hidden=false; p.scrollTop=0;
+    void p.offsetWidth;
+    p.classList.add("bk-page-in");
+    document.documentElement.style.overflow="hidden";
+    try{ history.pushState({bkPage:p.id}, ""); pushed=true; }catch(e){ pushed=false; }
+    var back=p.querySelector(".bk-back");
+    if(back){ try{ back.focus({preventScroll:true}); }catch(e){ back.focus(); } }
+  }
+  function closePage(){
+    if(!current) return;
+    var card=current, p=panelOf(card), done=false;
+    current=null; busy=true;
+    card.setAttribute("aria-expanded","false");
+    p.classList.remove("bk-page-in");
+    void p.offsetWidth;
+    p.classList.add("bk-page-out");
+    function fin(){
+      if(done) return; done=true;
+      p.removeEventListener("animationend", onEnd);
+      p.classList.remove("bk-page-out");
+      p.hidden=true; busy=false;
+      document.documentElement.style.overflow="";
+      try{ card.focus({preventScroll:true}); }catch(e){ card.focus(); }
+    }
+    function onEnd(e){ if(e.target===p) fin(); }
+    p.addEventListener("animationend", onEnd);
+    setTimeout(fin, 700);
+  }
+  function requestClose(){
+    if(!current) return;
+    if(pushed){ pushed=false; try{ history.back(); return; }catch(e){} }
+    closePage();
   }
   cards.forEach(function(card){
-    card.addEventListener("click", function(){
-      var open=card.getAttribute("aria-expanded")!=="true";
-      cards.forEach(function(c){ if(c!==card) setOpen(c,false); });
-      setOpen(card, open);
-      if(open){
-        var p=panelOf(card);
-        if(p.getBoundingClientRect().top > window.innerHeight*0.6){
-          var y=card.parentNode.getBoundingClientRect().top + window.pageYOffset - 150;
-          window.scrollTo({ top:y, behavior:"smooth" });
-        }
-      }
-    });
+    card.addEventListener("click", function(){ openPage(card); });
+    var back=panelOf(card) && panelOf(card).querySelector(".bk-back");
+    if(back) back.addEventListener("click", requestClose);
   });
+  window.addEventListener("popstate", function(){ if(current){ pushed=false; closePage(); } });
+  document.addEventListener("keydown", function(e){ if(e.key==="Escape" && current) requestClose(); });
 })();
 </script>
 
@@ -3797,5 +3882,17 @@
 })();
 </script>
 
+<script>
+(function(){
+  document.querySelectorAll(".pitch-q").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var open = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", open ? "false" : "true");
+      var panel = document.getElementById(btn.getAttribute("aria-controls"));
+      if (panel) panel.classList.toggle("open", !open);
+    });
+  });
+})();
+</script>
 </body>
 </html>

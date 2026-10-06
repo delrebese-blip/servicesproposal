@@ -2211,6 +2211,77 @@
   .pitch-q.acc-q > span{ min-width:0; }
   .pitch-head .pitch-q.acc-q{ justify-content:center; }
   .pitch-q .pitch-chev{ margin-top:0; }
+  /* ---------- Google Maps result demo ---------- */
+  #maps-proof{ padding: 8px 0 64px; }
+  .maps-wrap{ max-width: 640px; }
+  .maps-h2{
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1.5rem, 3.4vw, 2.05rem);
+    line-height: 1.15;
+    color: var(--heading);
+    margin: 0 0 10px;
+  }
+  .maps-h2 em{ font-style: normal; color: var(--gold); }
+  .maps-sub{ color: var(--ink-soft); font-size: .95rem; max-width: 54ch; margin-bottom: 20px; }
+  .maps-card{
+    background:#fff;
+    border:1px solid #E4E6EB;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    overflow:hidden;
+    color:#15181B;
+  }
+  .maps-card .gsr-searchbar{ background:#fff; }
+  .gm-map{ display:block; width:100%; height:auto; background:#E9EEF2; }
+  .gm-pin{ opacity:0; transform: translateY(-14px); transition: opacity .4s var(--ease), transform .45s var(--ease); }
+  .maps-card.is-on .gm-pin{ opacity:1; transform: translateY(0); }
+  .gm-unknown{ opacity:1; transition: opacity .3s var(--ease); }
+  .maps-card.is-on .gm-unknown{ opacity:0; }
+  .gm-panel{ padding: 16px 18px 18px; animation: gmFade .35s var(--ease); }
+  .gm-panel[hidden]{ display:none; }
+  @keyframes gmFade{ from{ opacity:0; transform: translateY(6px); } to{ opacity:1; transform:none; } }
+  .gm-empty-h{ font-size:1rem; font-weight:600; color:#15181B; margin-bottom:4px; }
+  .gm-empty-p{ font-size:.86rem; color:#5C6166; line-height:1.55; }
+  .gm-name{ font-size:1.18rem; font-weight:600; color:#15181B; line-height:1.25; margin-bottom:2px; }
+  .gm-meta{ font-size:.84rem; color:#5C6166; margin-bottom:14px; }
+  .gm-actions{ display:flex; flex-wrap:wrap; gap:8px; }
+  .gm-btn{
+    display:inline-flex; align-items:center; gap:7px;
+    font-size:.8rem; font-weight:600; font-family: var(--font-body);
+    padding:8px 14px; border-radius:999px;
+    border:1px solid #DADCE0; background:#fff; color:#1a73e8;
+    line-height:1;
+  }
+  .gm-btn svg{ flex-shrink:0; }
+  .gm-btn.primary{ background:#1a73e8; border-color:#1a73e8; color:#fff; }
+  .gm-btn.site{ border-color:#1a73e8; box-shadow: 0 0 0 3px rgba(26,115,232,.16); }
+  .gm-badge{
+    display:inline-flex; align-items:center; gap:6px; margin-top:14px;
+    background:#F0FBF5; border:1px solid #C3E6D0; color: var(--ok);
+    font-size:.72rem; font-weight:600; font-family: var(--font-mono); letter-spacing:.03em;
+    padding:5px 12px; border-radius:999px;
+  }
+  .maps-outcomes{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; margin-top:18px;
+  }
+  .maps-out{
+    background: var(--surface); border:1px solid var(--surface-border);
+    border-radius: var(--radius-sm); padding:14px 14px 15px;
+  }
+  .maps-out-ic{
+    width:30px; height:30px; border-radius:50%;
+    background: rgba(15,156,140,.12); color: var(--gold);
+    display:flex; align-items:center; justify-content:center; margin-bottom:9px;
+  }
+  .maps-out h3{ font-size:.92rem; color: var(--heading); margin-bottom:4px; }
+  .maps-out p{ font-size:.8rem; color: var(--ink-soft); line-height:1.5; }
+  .maps-note{ margin-top:14px; font-size:.76rem; color: var(--ink-soft); max-width:60ch; }
+  @media (max-width: 640px){
+    #maps-proof{ padding: 4px 0 44px; }
+    .maps-outcomes{ grid-template-columns: 1fr; }
+    .gm-btn{ padding:8px 12px; font-size:.76rem; }
+  }
 </style>
 </head>
 <body>
@@ -3264,6 +3335,94 @@
     </div>
   </section>
 
+  <!-- GOOGLE MAPS RESULT -->
+  <section class="section-tight" id="maps-proof">
+    <div class="wrap">
+      <div class="maps-wrap reveal">
+        <div class="seo-proof-label">
+          <svg viewBox="0 0 24 24" fill="none" width="16" height="16" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="1.7"/></svg>
+          <span data-t="maps.label">The result — on Google Maps</span>
+        </div>
+        <h2 class="maps-h2" data-t="maps.h2">Get your business <em>on the map</em></h2>
+        <p class="maps-sub" data-t="maps.sub">When customers search nearby, your business appears on Google Maps with your website one tap away.</p>
+
+        <div class="domain-toggle" role="tablist" data-t-aria="maps.aria" aria-label="Compare a business without and with a Google Maps listing">
+          <button type="button" class="domain-tab maps-tab" data-maps="off" role="tab" aria-selected="false" data-t="maps.tab.off">Not on the map</button>
+          <button type="button" class="domain-tab maps-tab active" data-maps="on" role="tab" aria-selected="true" data-t="maps.tab.on">On Google Maps</button>
+        </div>
+
+        <div class="maps-card is-on" id="mapsCard">
+          <div class="gsr-searchbar">
+            <svg viewBox="0 0 24 24" fill="none" width="18" height="18" style="flex-shrink:0;color:#5C6166" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <span class="gsr-query">dental clinic Parañaque</span>
+          </div>
+
+          <svg class="gm-map" viewBox="0 0 640 170" role="img" aria-label="Map preview" preserveAspectRatio="xMidYMid slice">
+            <rect width="640" height="170" fill="#E9EEF2"/>
+            <rect x="40" y="18" width="130" height="62" rx="6" fill="#CFE8D2"/>
+            <path d="M470 0h170v70c-50 10-110-6-170-24z" fill="#BCD9F2"/>
+            <g stroke="#fff" stroke-linecap="round" fill="none">
+              <path d="M-10 118L650 96" stroke-width="12"/>
+              <path d="M250 -10L300 180" stroke-width="10"/>
+              <path d="M420 -10L395 180" stroke-width="7"/>
+              <path d="M-10 52L250 60" stroke-width="6"/>
+              <path d="M300 140L650 150" stroke-width="6"/>
+            </g>
+            <g class="gm-unknown" aria-hidden="true">
+              <circle cx="330" cy="104" r="15" fill="#fff" stroke="#9AA0A6" stroke-width="2" stroke-dasharray="4 4"/>
+              <text x="330" y="110" text-anchor="middle" font-size="17" font-family="Inter,sans-serif" font-weight="600" fill="#9AA0A6">?</text>
+            </g>
+            <g class="gm-pin" aria-hidden="true">
+              <ellipse cx="330" cy="112" rx="9" ry="3" fill="rgba(0,0,0,.18)"/>
+              <path d="M330 110s17-15 17-29a17 17 0 0 0-34 0c0 14 17 29 17 29z" fill="#EA4335"/>
+              <circle cx="330" cy="81" r="6.5" fill="#fff"/>
+            </g>
+          </svg>
+
+          <div class="gm-panel" id="mapsPanelOff" hidden>
+            <p class="gm-empty-h" data-t="maps.off.h">No business listing found</p>
+            <p class="gm-empty-p" data-t="maps.off.p">Customers searching nearby can't see your location, phone or website, so they choose a business they can find.</p>
+          </div>
+
+          <div class="gm-panel" id="mapsPanelOn">
+            <p class="gm-name">AFJ Medina Dental Clinic</p>
+            <p class="gm-meta"><span data-t="maps.cat">Dental clinic</span> · Moonwalk, Parañaque City</p>
+            <div class="gm-actions">
+              <span class="gm-btn primary"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" aria-hidden="true"><path d="M4 12l16-8-8 16-2-6-6-2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span data-t="maps.dir">Directions</span></span>
+              <span class="gm-btn"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" aria-hidden="true"><path d="M6 3h3l2 5-2 1.5a11 11 0 0 0 5.5 5.5L16 13l5 2v3a3 3 0 0 1-3 3A15 15 0 0 1 3 6a3 3 0 0 1 3-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><span data-t="maps.call">Call</span></span>
+              <a class="gm-btn site" href="https://afjmedinadental.netlify.app/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 3c-2.5 3-4 5.8-4 9s1.5 6 4 9M12 3c2.5 3 4 5.8 4 9s-1.5 6-4 9M3 12h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span data-t="maps.web">Website</span></a>
+              <span class="gm-btn"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" aria-hidden="true"><path d="M6 4h12v17l-6-4-6 4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><span data-t="maps.save">Save</span></span>
+            </div>
+            <div class="gm-badge">
+              <svg viewBox="0 0 24 24" fill="none" width="13" height="13" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span data-t="maps.badge">Website linked — one tap from the map</span>
+            </div>
+          </div>
+        </div>
+
+        <ul class="maps-outcomes stagger">
+          <li class="maps-out reveal-zoom" style="--i:0">
+            <div class="maps-out-ic"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg></div>
+            <h3 data-t="maps.o1.h">Found nearby</h3>
+            <p data-t="maps.o1.p">Appear when local customers search for what you offer.</p>
+          </li>
+          <li class="maps-out reveal-zoom" style="--i:1">
+            <div class="maps-out-ic"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true"><path d="M9 4h11v11M20 4L8 16M5 9v11h11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3 data-t="maps.o2.h">One tap to your site</h3>
+            <p data-t="maps.o2.p">Visitors go straight to your website to see services and book.</p>
+          </li>
+          <li class="maps-out reveal-zoom" style="--i:2">
+            <div class="maps-out-ic"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <h3 data-t="maps.o3.h">Looks complete</h3>
+            <p data-t="maps.o3.p">Directions, phone and website together build trust before the visit.</p>
+          </li>
+        </ul>
+
+        <p class="maps-note" data-t="maps.note">Illustration of a typical Google Maps listing. Actual placement on the map is decided by Google.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- TESTIMONIALS (hidden by default — opens with the button) -->
   <section class="section-tight" id="testimonials">
     <div class="wrap">
@@ -3479,6 +3638,15 @@
       "domain.tab.custom":"With custom domain", "domain.tab.free":"Without (free subdomain)",
       "domain.caption.custom":"A custom domain like <strong>afjmedina.com</strong> looks more trustworthy in search results than a free subdomain. Add-on: ₱1,000/year.",
       "domain.caption.free":"A free subdomain like <strong>afjmedinadental.netlify.app</strong> works fine to get started, but shows Netlify's name instead of the clinic's own brand.",
+      "maps.label":"The result — on Google Maps", "maps.h2":"Get your business <em>on the map</em>",
+      "maps.sub":"When customers search nearby, your business appears on Google Maps with your website one tap away.",
+      "maps.aria":"Compare a business without and with a Google Maps listing", "maps.tab.off":"Not on the map", "maps.tab.on":"On Google Maps",
+      "maps.off.h":"No business listing found", "maps.off.p":"Customers searching nearby can't see your location, phone or website, so they choose a business they can find.",
+      "maps.cat":"Dental clinic", "maps.dir":"Directions", "maps.call":"Call", "maps.web":"Website", "maps.save":"Save", "maps.badge":"Website linked — one tap from the map",
+      "maps.o1.h":"Found nearby", "maps.o1.p":"Appear when local customers search for what you offer.",
+      "maps.o2.h":"One tap to your site", "maps.o2.p":"Visitors go straight to your website to see services and book.",
+      "maps.o3.h":"Looks complete", "maps.o3.p":"Directions, phone and website together build trust before the visit.",
+      "maps.note":"Illustration of a typical Google Maps listing. Actual placement on the map is decided by Google.",
       "testi.quote":"Mr. Del Rebese is one of my patients. As a dentist, having an online website is very important in ensuring the reliability and legitimacy of the clinic. He helped make our clinic's website more organized, accessible, and informative. Thank you for your talent, knowledge, and initiative.",
       "testi.eyebrow":"Client feedback", "testi.h2":"Don't just take my word for it", "testi.show":"Read client testimonials", "testi.hide":"Hide testimonials",
       "testi.m.hook":"Ordering just got a whole lot easier.", "testi.m.quote":"Customers can now see what we sell and order in one place. The site looks as fresh and clean as our chicken, and it makes us look like a serious brand.",
@@ -3572,6 +3740,15 @@
       "domain.tab.custom":"May custom domain", "domain.tab.free":"Walang domain (libreng subdomain)",
       "domain.caption.custom":"Mas mapagkakatiwalaan sa search results ang custom domain gaya ng <strong>afjmedina.com</strong> kaysa sa libreng subdomain. Add-on: ₱1,000/taon.",
       "domain.caption.free":"Okay lang ang libreng subdomain gaya ng <strong>afjmedinadental.netlify.app</strong> sa simula, pero pangalan ng Netlify ang lalabas imbes na sariling brand ng clinic.",
+      "maps.label":"Ang resulta — sa Google Maps", "maps.h2":"Ilagay ang negosyo mo <em>sa mapa</em>",
+      "maps.sub":"Kapag naghanap ang mga customer sa malapit, lalabas ang negosyo mo sa Google Maps at isang tap lang ang website mo.",
+      "maps.aria":"Ihambing ang negosyong wala at mayroon sa Google Maps", "maps.tab.off":"Wala sa mapa", "maps.tab.on":"Nasa Google Maps",
+      "maps.off.h":"Walang nahanap na business listing", "maps.off.p":"Hindi makikita ng mga customer sa malapit ang lokasyon, numero o website mo, kaya pipili sila ng negosyong mahahanap nila.",
+      "maps.cat":"Dental clinic", "maps.dir":"Direksyon", "maps.call":"Tawag", "maps.web":"Website", "maps.save":"I-save", "maps.badge":"Naka-link ang website — isang tap mula sa mapa",
+      "maps.o1.h":"Mahahanap sa malapit", "maps.o1.p":"Lumabas kapag naghanap ang mga lokal na customer ng serbisyong inaalok mo.",
+      "maps.o2.h":"Isang tap papunta sa site", "maps.o2.p":"Diretso ang mga bisita sa website mo para makita ang serbisyo at mag-book.",
+      "maps.o3.h":"Kumpleto ang itsura", "maps.o3.p":"Ang direksyon, numero at website na magkakasama ay nagbibigay ng tiwala bago pa bumisita.",
+      "maps.note":"Ilustrasyon ng karaniwang listing sa Google Maps. Ang Google ang magpapasya kung saan lalabas sa mapa.",
       "testi.quote":"Isa si Mr. Del Rebese sa mga pasyente ko. Bilang dentista, mahalagang-mahalaga ang pagkakaroon ng website para masiguro ang kredibilidad at legitimacy ng clinic. Tinulungan niya kaming gawing mas organisado, accessible, at informative ang website ng clinic namin. Salamat sa talento, kaalaman, at inisyatiba mo.",
       "testi.eyebrow":"Feedback ng mga kliyente", "testi.h2":"Huwag mo lang akong paniwalaan", "testi.show":"Basahin ang mga testimonial", "testi.hide":"Itago ang mga testimonial",
       "testi.m.hook":"Mas madali na ang pag-order.", "testi.m.quote":"Nakikita na ng mga customer ang mga binebenta namin at nakakapag-order sila sa iisang lugar. Kasing-fresh at kasing-linis ng manok namin ang itsura ng site, at mukha na kaming seryosong brand.",
@@ -3743,6 +3920,24 @@
         seoProofCard.classList.remove("swap");
         domainCaption.classList.remove("swap");
       }, 220);
+    });
+  });
+
+  // Google Maps result toggle — not on the map vs on Google Maps
+  const mapsTabs = document.querySelectorAll(".maps-tab");
+  const mapsCard = document.getElementById("mapsCard");
+  const mapsOn = document.getElementById("mapsPanelOn");
+  const mapsOff = document.getElementById("mapsPanelOff");
+  mapsTabs.forEach(function(tab){
+    tab.addEventListener("click", function(){
+      if (tab.classList.contains("active") || !mapsCard) return;
+      mapsTabs.forEach(function(t){ t.classList.remove("active"); t.setAttribute("aria-selected","false"); });
+      tab.classList.add("active");
+      tab.setAttribute("aria-selected","true");
+      const on = tab.getAttribute("data-maps") === "on";
+      mapsCard.classList.toggle("is-on", on);
+      if (mapsOn) mapsOn.hidden = !on;
+      if (mapsOff) mapsOff.hidden = on;
     });
   });
 
